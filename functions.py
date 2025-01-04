@@ -4,14 +4,14 @@ from openai import OpenAI
 import os
 from datetime import datetime,timezone
 import json
-from .integrations.brevo.BrevoSend  import build_campaign, return_campaign_files, delete_campaign_files
-from .integrations.brevo.BrevoWorkflow import adhoc_build_campaign
+from integrations.brevo.BrevoSend  import build_campaign, return_campaign_files, delete_campaign_files
+from integrations.brevo.BrevoWorkflow import adhoc_build_campaign
 # from .BrevoUpdateContactList import main as update_contact_list
-from .integrations.brevo.BrevoBounceList import main as gen_bounce_list
-from .integrations.google.gmail import download_csv
+from integrations.brevo.BrevoBounceList import main as gen_bounce_list
+from integrations.google.gmail import download_csv
 import string
 import random
-from .config import config
+from config import config
 
 
 OpenAI.api_key = os.getenv('OPENAI_API_KEY')

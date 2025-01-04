@@ -67,7 +67,7 @@ def signup():
 
 
 @app.route('/logout')
-@login_required
+#@login_required
 def logout():
     logout_user()
     session.clear()  # Clear all session data

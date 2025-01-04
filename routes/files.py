@@ -3,7 +3,7 @@ from . import *
 
 # File upload route
 @app.route('/chat/<chat_id>/upload-file', methods=['POST'])
-@login_required
+#@login_required
 def upload_file(chat_id):
     if 'file' not in request.files:
         return jsonify({'success': False, 'error': 'No file part in the request'}), 400
@@ -38,7 +38,7 @@ def upload_file(chat_id):
 
 # Route to handle image upload
 @app.route('/upload_image', methods=['POST'])
-@login_required
+#@login_required
 def upload_image():
     if 'image' not in request.files:
         return jsonify({'error': 'No image file provided'}), 400
@@ -60,13 +60,13 @@ def upload_image():
 
 # Route to serve the uploaded images
 @app.route('/static/uploads/<filename>')
-@login_required
+#@login_required
 def uploaded_file(filename):
     return send_from_directory(f'{app_workdir}/app-files/users/{current_user.id}/uploads/imgs/', filename)
 
 # Route to load pre-existing images
 @app.route('/load_images')
-@login_required
+#@login_required
 def load_images():
     image_files = os.listdir(f'{app_workdir}/app-files/users/{current_user.id}/uploads/imgs/')
     image_urls = [f'/static/uploads/{file}' for file in image_files]
@@ -76,20 +76,20 @@ def load_images():
 
 # Route to download or serve a file from the server
 @app.route('/imgs/<filename>')
-# @login_required
+# #@login_required
 def images(filename):
     return send_from_directory(app.config['IMGS'], filename)
 
 # Route to view all uploaded files
 @app.route('/files', methods=['GET'])
-@login_required
+#@login_required
 def list_files():
     files = os.listdir(f'{app_workdir}/app-files/users/{current_user.id}/uploads')
     return jsonify([{"name": file} for file in files])
 
 # Route to download a file
 @app.route('/download-file', methods=['GET'])
-@login_required
+#@login_required
 def download_file():
     file_name = request.args.get('filename')
     if file_name and os.path.exists(os.path.join(f'{app_workdir}/app-files/users/{current_user.id}/uploads', file_name)):
@@ -98,7 +98,7 @@ def download_file():
 
 # Route to delete a file
 @app.route('/delete-file', methods=['DELETE'])
-@login_required
+#@login_required
 def delete_file():
     file_name = request.args.get('filename')
     file_path = os.path.join(f'{app_workdir}/app-files/users/{current_user.id}/uploads', file_name)

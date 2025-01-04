@@ -22,7 +22,7 @@ from . import *
 #     return jsonify({"templates": templates})
 
 # @app.route('/get_template/<template_name>')
-# @login_required
+# #@login_required
 # def get_template(template_name):
 #     # Dynamically fetch the template content from disk
 #     templates = get_available_templates()
@@ -32,7 +32,7 @@ from . import *
 
 @app.route('/email_designs', defaults={'filename': None}, methods=['GET', 'POST'])
 @app.route('/email_designs/<filename>', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def email_designs(filename):
     archive_type = "email_designs"
     FILE_DIRECTORY = f'{app_workdir}/app-files/users/{current_user.id}/{archive_type}'
@@ -55,19 +55,19 @@ def email_designs(filename):
  
 # Email editor
 @app.route('/email_edit', methods=['GET'])
-@login_required
+#@login_required
 def email_edit():
     return send_file(f'{app_workdir}/templates/email_editor.html')#, templates=templates)    
 
 
 @app.route('/email.css', methods=['GET'])
-@login_required
+#@login_required
 def email_css():
     return send_file(f'{app_workdir}/templates/email.css')#, templates=templates)  
 
 
 @app.route('/email.js', methods=['GET'])
-@login_required
+#@login_required
 def email_js():
     return send_file(f'{app_workdir}/templates/email.js')#, templates=templates)  
 
@@ -90,7 +90,7 @@ def save_design_files(user_id, design_id, html_content, json_content):
 
 # Route to create and save a new design
 @app.route('/save-design', methods=['POST'])
-@login_required
+#@login_required
 def save_template():
     try:
         # Extract data from the request
@@ -142,7 +142,7 @@ def create_user_directory(user_id):
 
 
 @app.route('/email_design_preview')
-@login_required
+#@login_required
 def email_design_preview():
     try:
         with open(f'{app_workdir}/app-files/uploads/latest.html', 'r') as f:
@@ -154,7 +154,7 @@ def email_design_preview():
         return f"An error occurred: {str(e)}", 500
 
 @app.route('/latest_template')
-@login_required
+#@login_required
 def get_saved_template():
     try:
         with open(f'{app_workdir}/app-files/uploads/latest.html', 'r') as f:
@@ -166,7 +166,7 @@ def get_saved_template():
         return f"An error occurred: {str(e)}", 500
     
 @app.route('/latest_template_html')
-@login_required
+#@login_required
 def get_latest_template():
     try:
         with open(f'{app_workdir}/app-files/uploads/latest.html', 'r') as f:
@@ -187,7 +187,7 @@ def allowed_file(filename):
 
 # Route to upload an image
 @app.route('/upload-img', methods=['POST'])
-@login_required
+#@login_required
 def upload_img():
 # Base directory for user images
     IMAGES_BASE_DIR = f'{app_workdir}/app-files/users/{current_user.id}/uploads/imgs'

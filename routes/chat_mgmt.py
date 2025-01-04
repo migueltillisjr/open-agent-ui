@@ -7,7 +7,7 @@ from .. import assistant
 
 # Route to create a new chat, associated with the current user
 @app.route('/chat/new', methods=['POST'])
-@login_required
+##@login_required
 def new_chat():
     # Create a new chat
     user_id = current_user.id  # Assuming current_user is the logged-in user
@@ -21,7 +21,7 @@ def new_chat():
 
 # Route to send a message and get a response for a specific chat
 @app.route('/chat/<int:user_id>/<int:chat_number>/send', methods=['POST'])
-@login_required
+##@login_required
 def send_message(user_id, chat_number):
     chat = Chat.query.filter_by(user_id=user_id, chat_number=chat_number).first_or_404()
     data = request.json
@@ -49,7 +49,7 @@ def send_message(user_id, chat_number):
 
 # Route to get the chat history for a specific chat
 @app.route('/chat/<int:user_id>/<int:chat_number>/history', methods=['GET'])
-@login_required
+##@login_required
 def get_chat_history(user_id, chat_number):
     chat = Chat.query.filter_by(user_id=user_id, chat_number=chat_number).first_or_404()
     messages = Message.query.filter_by(user_id=user_id, chat_number=chat_number).order_by(Message.timestamp).all()
@@ -65,7 +65,7 @@ def get_chat_history(user_id, chat_number):
 
 # Route to get the list of all chats for the current user
 @app.route('/chat-history', methods=['GET'])
-@login_required
+##@login_required
 def get_chat_list():
     chats = Chat.query.filter_by(user_id=current_user.id).all()
     chat_list = [
@@ -76,7 +76,7 @@ def get_chat_list():
 
 # Route to delete a chat for the current user
 @app.route('/chat/<int:user_id>/<int:chat_number>/delete', methods=['DELETE'])
-@login_required
+##@login_required
 def delete_chat(user_id, chat_number):
     chat = Chat.query.filter_by(user_id=user_id, chat_number=chat_number).first_or_404()
     db.session.delete(chat)

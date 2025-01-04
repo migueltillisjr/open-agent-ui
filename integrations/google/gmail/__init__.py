@@ -1,6 +1,6 @@
 import gspread
 import csv
-from ....config import app, login_manager, db, bcrypt, app_workdir
+from config import app, login_manager, db, bcrypt, app_workdir
 import os
 
 from google.oauth2.service_account import Credentials

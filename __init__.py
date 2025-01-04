@@ -24,8 +24,8 @@ import os
 import time
 from datetime import datetime
 from openai import OpenAI
-from .functions import Functions
-from .config import *
+from functions import Functions
+from config import *
 #dotenv.load_dotenv()
 OPENAI_API_KEY=os.getenv('OPENAI_API_KEY')
 OpenAI.api_key=OPENAI_API_KEY
