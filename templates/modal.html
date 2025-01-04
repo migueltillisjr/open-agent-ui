@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Initiator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #textInput {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        #checkButton {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #checkButton:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        #myModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgb(0,0,00.4);
+            animation: fadeIn 1s;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            overflow-y: scroll;
+        }
+        .close {
+            color: #fc0b0b;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0;}
+            to { opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="modalControl" placeholder="Type something..."><br>
+    <input type="text" class="modalControl" placeholder="Type something..."><br>
+    <input type="text" class="modalControl" placeholder="Type something..."><br>
+    <div id="modalContainer"></div>
+    <div id="myModal">
+        <div class="modal-content">
+            <span class="close">x</span>
+            <p id="modalMessage"></p>
+            <img id="modalImage" class="modal-image" src="" alt="Modal Image">
+        </div>
+    </div>
+<!--
+<@e3>http://example.com
+-->
+
+<script>
+    document.querySelectorAll('.modalControl').forEach(element => {
+        element.addEventListener('input', function(event) {
+            const specialCharPattern = /<@e3>/g;
+            const textInput = event.target.value;
+            if (specialCharPattern.test(textInput)) {
+                const targetText = textInput.split('<@e3>')[1] || '';
+                setCustomAttribute(event.target);
+                removeSpecialCharacters(event.target);
+
+                fetch('/api/modal', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title: textInput.split('<@e3>')[0],
+                        message: textInput.split('<@e3>')[0],
+                        target: targetText.trim()
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('modalContainer').innerHTML = data.modal_html;
+                    var modal = document.getElementById('myModal');
+                    var span = document.getElementsByClassName('close')[0];
+
+                    document.getElementById('modalMessage').innerText = data.message;
+                    document.getElementById('modalImage').src = data.imageUrl;
+                    modal.style.display = 'block';
+
+                    span.onclick = function() {
+                        modal.style.display = 'none';
+                        removeSpecialCharacters(event.target)
+                    }
+
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = 'none';
+                            removeSpecialCharacters(event.target);
+                        }
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        });
+    });
+
+    function setCustomAttribute(element) {
+        const value = element.value.split('<@e3>')[1];
+        element.setAttribute('modal', value);
+        localStorage.setItem('modalvalue', value);
+    }
+
+    function removeSpecialCharacters(element) {
+        element.value = element.value.split('<@e3>')[0];
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const storedValue = localStorage.getItem('modalValue');
+        if (storedValue) {
+            const elements = document.querySelectorAll('.specialClass');
+            elements.forEach(element => {
+                element.setAttribute('modal', storedValue);
+            });
+        }
+    });
+</script>
+<!-- 
+<@e3>http://example.com
+-->
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+    "tag": "E3-Campaign",
+    "sender": {
+        "email": "no-reply@ldmg.org"
+    },
+    "name": "20240519-E3-Campaign",
+    "htmlUrl": "http://127.0.0.1:8080/email_designs/20240519-E3-Campaign.html",
+    "scheduledAt": "2024-05-19T18:40:51.370197+00:00",
+    "subject": "Sample campaign",
+    "replyTo": "no-reply@ldmg.org",
+    "toField": "{{contact.NAME}}",
+    "recipients": {
+        "listIds": [
+            63
+        ]
+    },
+    "inlineImageActivation": false,
+    "mirrorActive": false,
+    "recurring": false,
+    "type": "classic",
+    "header": "If you are not able to see this mail, click {here}",
+    "footer": "If you wish to unsubscribe from our newsletter, click {here}",
+    "params": {
+        "PARAMETER": "My param value",
+        "ADDRESS": "Seattle, WA",
+        "SUBJECT": "New Subject"
+    }
+}

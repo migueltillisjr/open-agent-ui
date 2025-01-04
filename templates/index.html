@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Interface with OpenAI Assistant and File Manager</title>
+  <link rel="stylesheet" href="chat.css" />
+
+  <style>
+  </style>
+</head>
+<body>
+
+<div class="main-container">
+      <!-- Display the username and logout button if the user is logged in -->
+  {% if current_user.is_authenticated %}
+
+
+
+  <!-- Sidebar (Message History) -->
+  <div class="sidebar" id="sidebar">
+    <div>
+      
+      <!-- <img style="width: 100%;margin: auto;" src="/imgs/logo.png"> -->
+      <!-- <p style="text-align: center;color: #333;">Welcome {{ current_user.username }}</p> -->
+<br>
+
+      <button class="new-chat-btn" onclick="ChatManager.createNewChat()">&#x2795;</button>
+      <div id="chat-history-list">
+        <!-- Chats will be dynamically inserted here -->
+      </div>
+    </div>
+    <img src="https://cdn-icons-png.flaticon.com/512/126/126472.png" alt="Settings" class="settings-icon" onclick="UIManager.openSettings()">
+    <button class="logout-button"><a style="text-decoration: none;color: white;" href="{{ url_for('logout') }}">Logout</a> </button>
+  </div>
+
+  <!-- Chat Container -->
+  <div class="chat-container">
+    <!-- Header -->
+    <!-- <div style="font-size: x-small;" class="header">
+      <div class="logo">E3 v2.0</div>
+    </div> -->
+    <div id="loading-spinner"></div>
+    <!-- Chat Window -->
+     <div class="scroll-box">
+    <div class="chat-window" id="chat-window">
+
+      <!-- Chat messages will appear here -->
+    </div>
+    </div>
+    <!-- Input Area -->
+    <div class="input-area">
+      <!-- File Manager Modal Button -->
+      <button class="file-manager-btn" onclick="UIManager.openFileManager()">
+        <img src="https://cdn-icons-png.flaticon.com/512/148/148947.png" alt="File Manager">
+      </button>
+
+      <input type="text" id="input-message" placeholder="Send a message..." onkeydown="ChatManager.handleKeyPress(event)">
+      <!-- <button onclick="ChatManager.sendMessage()">Go</button> -->
+      <!-- Loading spinner -->
+
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <h3>Settings</h3>
+      <p>Here you can configure your preferences.</p>
+      <button class="close-btn" onclick="UIManager.closeSettings()">Close</button>
+    </div>
+  </div>
+
+  <!-- File Manager Modal -->
+  <div id="file-manager-modal" class="modal">
+    <div class="modal-content">
+      <h3>File Manager</h3>
+      <input type="file" id="file-upload-modal">
+      <button onclick="UIManager.uploadFileFromModal()">Upload</button>
+      <div id="file-list">
+        <!-- List of files will be dynamically inserted here -->
+      </div>
+      <button class="close-btn" onclick="UIManager.closeFileManager()">Close</button>
+    </div>
+  </div>
+
+
+<!-- Include Marked.js from CDN -->
+<script src="/marked.min.js"></script>
+<script src="/chat.js"></script>
+  
+
+{% else %}
+  <p>You are not logged in.</p>
+  <a href="{{ url_for('login') }}">Login</a>
+  <!-- <a href="{{ url_for('signup') }}">Sign Up</a> -->
+{% endif %}
+</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+.e3env
+.env
+__pycache__
+.ldmg
+google.credentials.json
+config.yaml*
+.eenv
+instance/
+__pycache__
+.expv2

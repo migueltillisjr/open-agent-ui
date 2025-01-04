@@ -1,0 +1,3 @@
+0 0 * * * root /usr/bin/bash -c "cd /var/www/html/;/usr/local/bin/python3.11 -c \"from SendReport import send_campaign;send_campaign()\"  >> /var/log/api/Brevo_send_report.log"
+0 * * * * root /usr/bin/bash -c "cd /var/www/html/;/usr/local/bin/python3.11 -c \"from adhoc_gen_report import initiate;initiate()\"  >> /var/log/api/Brevo_gen_report.log"
+*/5 * * * * root /usr/bin/bash -c "cd /var/www/html/;/usr/local/bin/python3.11 -c \"from BrevoSend import schedule_campaign;schedule_campaign()\"  >> /var/log/api/Brevo_schedule_campaign.log"
