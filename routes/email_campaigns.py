@@ -4,7 +4,7 @@ from . import *
 # Combined route for listing, downloading, and deleting archives
 @app.route('/bounce_lists', defaults={'filename': None}, methods=['GET', 'POST'])
 @app.route('/bounce_lists/<filename>', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def bounce_lists(filename):
     archive_type = "bounce_lists"
     FILE_DIRECTORY = f'{app_workdir}/app-files/users/{current_user.id}/{archive_type}'
@@ -26,7 +26,7 @@ def bounce_lists(filename):
 
 @app.route('/email_lists', defaults={'filename': None}, methods=['GET', 'POST'])
 @app.route('/email_lists/<filename>', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def email_lists(filename):
     archive_type = "email_lists"
     FILE_DIRECTORY = f'{app_workdir}/app-files/users/{current_user.id}/{archive_type}'
@@ -48,7 +48,7 @@ def email_lists(filename):
 
 @app.route('/contacts', defaults={'filename': None}, methods=['GET', 'POST'])
 @app.route('/contacts/<filename>', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def contacts(filename):
     archive_type = "contacts"
     FILE_DIRECTORY = f'{app_workdir}/app-files/users/{current_user.id}/{archive_type}'
@@ -68,7 +68,7 @@ def contacts(filename):
         return "File not specified", 400  
 
 @app.route('/upload_contacts', methods=['POST'])
-#@login_required
+@login_required
 def upload_contacts():
     try:
         # Check if the 'file' field is in the request
@@ -91,7 +91,7 @@ def upload_contacts():
 
 
 @app.route('/delete_campaigns', methods=['POST'])
-#@login_required
+@login_required
 #@require_api_key  # Require API key for this POST route
 def delete_campaigns():
     filenames_to_delete=list()
@@ -101,7 +101,7 @@ def delete_campaigns():
 
 
 @app.route('/list_campaigns', methods=['GET'])
-#@login_required
+@login_required
 #@require_api_key  # Require API key for this POST route
 def list_campaigns():
     filenames=list()
@@ -111,7 +111,7 @@ def list_campaigns():
 
 
 @app.route('/query', methods=['POST'])
-#@login_required
+@login_required
 #@require_api_key  # Require API key for this POST route
 def post_example():
     data = request.json

@@ -5,14 +5,14 @@ from . import *
 
 # Reporting Routes ############################################################################################################################
 @app.route('/notify_report', methods=['GET'])
-# #@login_required
+# @login_required
 def notify_report():
     return send_file(f'{app_workdir}/app-files/users/{current_user.id}/templates/notify.html')
 
 
 @app.route('/reports', defaults={'filename': None}, methods=['GET', 'POST'])
 @app.route('/reports/<filename>', methods=['GET', 'POST'])
-# #@login_required
+# @login_required
 def reports(filename):
     archive_type = "reports"
     FILE_DIRECTORY = f'{app_workdir}/app-files/users/{current_user.id}/{archive_type}'

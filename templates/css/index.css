@@ -33,7 +33,7 @@
 
 
 .history-item {
-    background-color: #e57363; /* Lighter red for history items */
+    background-color: #e57363;
     margin-bottom: 10px;
     padding: 5px;
     border-radius: 5px;
@@ -45,20 +45,21 @@
 }
 
 .history-item:hover {
-    background-color: #ff7f50; /* Orange hover for history items */
+    background-color: #ff7f50; 
 }
 
+
 .delete-btn {
-    background-color: red !important;
     border: none;
-    color: white;
-    font-size: 18px;
+    color: rgb(8, 8, 8);
+    font-size: 1.8em;
     cursor: pointer;
     margin-left: 10px;
+
 }
 
 .delete-btn:hover {
-    color: #ff4d4d; /* Bright red for delete button hover */
+    color: #ff4d4d; 
 }
 
 .chat-container {
@@ -479,7 +480,7 @@ body {
 }
 
 .history-item::before {
-    content: '';
+    /* content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -487,7 +488,7 @@ body {
     height: 100%;
     background-color: rgba(255, 138, 90, 0.2);
     transition: width var(--transition-speed) ease;
-    z-index: 1;
+    z-index: 1; */
 }
 
 .history-item:hover {
@@ -505,11 +506,11 @@ body {
     color: var(--primary-color);
     border: none;
     cursor: pointer;
-    transition: transform var(--transition-speed) ease;
+    /* transition: transform var(--transition-speed) ease; */
 }
 
 .delete-btn:hover {
-    transform: scale(1.2) rotate(10deg);
+    /* transform: scale(1.2) rotate(10deg); */
     color: #ff4d4d;
 }
 

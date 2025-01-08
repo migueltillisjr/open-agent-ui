@@ -1,49 +1,49 @@
 from . import *
 
 @app.route('/')
-#@login_required
+@login_required
 def home():
-    return render_template('index.html', user=current_user.username, user_id=current_user.id)
+    css_files = [f for f in os.listdir(f'{app_workdir}/templates/css') if f.endswith('.css')]
+    js_files = [f for f in os.listdir(f'{app_workdir}/templates/js') if f.endswith('.js')]
+    return render_template('index.html', user=current_user.username, user_id=current_user.id, css_files=css_files, js_files=js_files)
 
-# Protect the main route
-@app.route('/core')
-#@login_required
-def core():
-    return render_template('core.html', user=current_user.username, user_id=current_user.id)
+@app.route('/css/<filename>')
+@login_required
+def serve_style(filename):
+    # Sanitize the filename to prevent directory traversal attacks
+    safe_filename = os.path.basename(filename)
 
-@app.route('/core.styleguide.css')
-#@login_required
-def core_style_guide():
-    return render_template('core.styleguide.css', user=current_user.username, user_id=current_user.id)
+    # Check if the file exists in the directory
+    file_path = os.path.join(f'{app_workdir}/templates/css', safe_filename)
+    if not os.path.isfile(file_path):
+        abort(404)
 
-@app.route('/chat.css')
-#@login_required
-def chat_css():
-    return send_file(f'{app_workdir}/templates/chat.css')
+    # Serve the file
+    return send_from_directory(f'{app_workdir}/templates/css', safe_filename)
 
-@app.route('/chat.js')
-#@login_required
-def chat_js():
-    return send_file(f'{app_workdir}/templates/chat.js')
 
-@app.route('/marked.min.js')
-#@login_required
-def marked_js():
-    return send_file(f'{app_workdir}/templates/marked.min.js')
+@app.route('/js/<filename>')
+@login_required
+def serve_javascript(filename):
+    # Sanitize the filename to prevent directory traversal attacks
+    safe_filename = os.path.basename(filename)
 
-@app.route('/core.style.css')
-#@login_required
-def core_style():
-    return render_template('core.style.css', user=current_user.username, user_id=current_user.id)
+    # Check if the file exists in the directory
+    file_path = os.path.join(f'{app_workdir}/templates/js', safe_filename)
+    if not os.path.isfile(file_path):
+        abort(404)
+
+    # Serve the file
+    return send_from_directory(f'{app_workdir}/templates/js', safe_filename)
 
 
 @app.route('/modal')
-#@login_required
+@login_required
 def modal():
     return render_template('modal.html')
 
 @app.route('/api/modal', methods=['POST'])
-#@login_required
+@login_required
 def get_modal():
     # <@e3>http://example.com
     data = request.json
@@ -62,8 +62,3 @@ def get_modal():
 ''', title=title, message=message, target=target)
     print(data)
     return jsonify({'modal_html': modal_html})
-
-@app.route('/dashboard')
-#@login_required
-def dashboard():
-    return f'Hello, {current_user.username}! Welcome to your dashboard.'

@@ -8,4 +8,4 @@
 - upgrade view, much like language Gui
 - pin a chat to save from deletion, must un-pin to delete
 - stream LLM responses
-- allow user commands to change the view as well as initiate actions# openllmui-api
+- allow user commands to change the view as well as initiate actions

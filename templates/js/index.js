@@ -170,18 +170,12 @@ const UIManager = {
     const historyItem = document.createElement('div');
     historyItem.classList.add('history-item');
     historyItem.textContent = `Chat ${chatNumber}`;
-    historyItem.onclick = () => ChatManager.loadChat(userId, chatNumber);
+    historyItem.setAttribute('onclick', `ChatManager.loadChat(${userId}, ${chatNumber})`);
 
     const deleteBtn = document.createElement('button');
     deleteBtn.classList.add('delete-btn');
-    deleteBtn.innerHTML = '&times;X';
-    deleteBtn.onclick = () => ChatManager.deleteChat(userId, chatNumber);
-    // deleteBtn.onclick = () => ChatManager.deleteChat(userId, chatNumber)
-    // deleteBtn.onclick = (event) => {
-    //   event.stopPropagation();
-    //   console.log(`Delete button clicked for chat ${chatNumber}`);
-    //   ChatManager.deleteChat(userId, chatNumber);
-    // };
+    deleteBtn.innerHTML = '&times;';
+    deleteBtn.setAttribute('onclick', `ChatManager.deleteChat(${userId}, ${chatNumber})`);
 
 
     historyItem.appendChild(deleteBtn);
