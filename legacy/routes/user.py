@@ -41,25 +41,28 @@ def create_user_directory(user_id):
 # Signup route
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    try:
-        # Hash password
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        
-        # Create a new user instance
-        new_user = User(username=form.username.data, password=hashed_password, directory_path="")
-        db.session.add(new_user)
-        db.session.commit()
-        
-        # Create a directory for the new user and update the user's directory_path
-        user_dir = create_user_directory(new_user.id)
-        new_user.directory_path = user_dir
-        db.session.commit()
-        
-        flash('Account created successfully! Please log in.', 'success')
-        return redirect(url_for('login'))
-    except Exception as e:
-        db.session.rollback()  # Rollback in case of an error
-        flash('Signup failed. Try again or choose a different username.', 'error')
+    form = SignupForm()
+    if form.validate_on_submit():
+        try:
+            # Hash password
+            hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+            
+            # Create a new user instance
+            new_user = User(username=form.username.data, password=hashed_password, directory_path="")
+            db.session.add(new_user)
+            db.session.commit()
+            
+            # Create a directory for the new user and update the user's directory_path
+            user_dir = create_user_directory(new_user.id)
+            new_user.directory_path = user_dir
+            db.session.commit()
+            
+            flash('Account created successfully! Please log in.', 'success')
+            return redirect(url_for('login'))
+        except Exception as e:
+            db.session.rollback()  # Rollback in case of an error
+            flash('Signup failed. Try again or choose a different username.', 'error')
+    return render_template('signup.html', form=form)
 
 
 

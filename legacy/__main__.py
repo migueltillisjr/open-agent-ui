@@ -1,6 +1,6 @@
-from .routes.user import *
-# from .forms import *
-# from .tasks import start_scheduler
+from .routes import *
+from .forms import *
+from .tasks import start_scheduler
 
 if __name__ == '__main__':
     # Create the application context and initialize the database tables
