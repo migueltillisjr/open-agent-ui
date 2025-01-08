@@ -13,6 +13,7 @@
 <body>
 
 <div class="main-container">
+
       <!-- Display the username and logout button if the user is logged in -->
   {% if current_user.is_authenticated %}
 
@@ -24,6 +25,7 @@
 <br>
 
       <button class="new-chat-btn" onclick="ChatManager.createNewChat()">&#x2795;</button>
+      <button onclick="ChatManager.scrollToBottom()">scroll</button>
       <div id="chat-history-list">
         <!-- Chats will be dynamically inserted here -->
       </div>
@@ -40,7 +42,7 @@
     </div> -->
     <div id="loading-spinner"></div>
     <!-- Chat Window -->
-     <div class="scroll-box">
+     <div class="scroll-box" id="scroll-box">
     <div class="chat-window" id="chat-window">
 
       <!-- Chat messages will appear here -->

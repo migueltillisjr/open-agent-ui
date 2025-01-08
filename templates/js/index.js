@@ -1,6 +1,17 @@
+
+
 const ChatManager = {
   currentChatUserId: null,
   currentChatNumber: null,
+
+  scrollToBottom() {
+    const chatWindow = document.getElementById('scroll-box');
+    chatWindow.scrollTo({
+      top: chatWindow.scrollHeight,
+      behavior: 'smooth' // Smooth scrolling effect
+    });
+    console.log("scrolling..");
+  },
 
   // Load a specific chat by user_id and chat_number
   loadChat(userId, chatNumber) {
@@ -19,6 +30,8 @@ const ChatManager = {
       });
   },
 
+
+  
   // Send a message
   sendMessage() {
     const input = document.getElementById('input-message');
@@ -40,16 +53,18 @@ const ChatManager = {
       .then(data => {
         UIManager.appendMessage(data.user_message, true);
         UIManager.appendMessage(data.assistant_message, false);
-
+        this.scrollToBottom();
         input.value = '';
         if (spinner) {
           spinner.style.display = 'none';
+          this.scrollToBottom();
         }
       })
       .catch(error => {
         console.error('Error sending message:', error);
         if (spinner) {
           spinner.style.display = 'none';
+          
         }
       });
   },
@@ -182,6 +197,32 @@ const UIManager = {
     historyList.appendChild(historyItem);
   },
 };
+
+// const chatWindow = document.getElementById('chat-window');
+
+// // Add a draggable area
+// const dragHandle = document.createElement('div');
+// dragHandle.classList.add('drag-handle');
+// chatWindow.prepend(dragHandle);
+
+// dragHandle.addEventListener('mousedown', function (e) {
+//   let offsetX = e.clientX - chatWindow.offsetLeft;
+//   let offsetY = e.clientY - chatWindow.offsetTop;
+
+//   function onMouseMove(event) {
+//     chatWindow.style.left = `${event.clientX - offsetX}px`;
+//     chatWindow.style.top = `${event.clientY - offsetY}px`;
+//   }
+
+//   function onMouseUp() {
+//     document.removeEventListener('mousemove', onMouseMove);
+//     document.removeEventListener('mouseup', onMouseUp);
+//   }
+
+//   document.addEventListener('mousemove', onMouseMove);
+//   document.addEventListener('mouseup', onMouseUp);
+// });
+
 
 // Load chat list on page load
 window.onload = () => ChatManager.updateChatList();

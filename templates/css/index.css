@@ -42,10 +42,12 @@
     justify-content: space-between;
     align-items: center;
     font-size: small;
+    color: black;
 }
 
 .history-item:hover {
     background-color: #ff7f50; 
+    color: white;
 }
 
 
@@ -521,12 +523,12 @@ body {
     backdrop-filter: blur(10px);
 }
 
-.chat-window {
+/* .chat-window {
     background-color: var(--background-light);
     border-radius: var(--border-radius);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     transition: box-shadow var(--transition-speed) ease;
-}
+} */
 
 .chat-window:hover {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
