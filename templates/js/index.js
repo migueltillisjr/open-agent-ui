@@ -13,6 +13,15 @@ const ChatManager = {
     console.log("scrolling..");
   },
 
+  scrollToBottomQuick() {
+    const chatWindow = document.getElementById('scroll-box');
+    chatWindow.scrollTo({
+      top: chatWindow.scrollHeight,
+      behavior: 'instant' // Smooth scrolling effect
+    });
+    console.log("scrolling..");
+  },
+
   // Load a specific chat by user_id and chat_number
   loadChat(userId, chatNumber) {
     this.currentChatUserId = userId;
@@ -27,6 +36,7 @@ const ChatManager = {
         data.messages.forEach(msg =>
           UIManager.appendMessage(msg.message, msg.sender === 'user')
         );
+        this.scrollToBottomQuick()
       });
   },
 
@@ -95,14 +105,20 @@ const ChatManager = {
           if (!this.currentChatUserId || !this.currentChatNumber) {
             const firstChat = data.chats[0];
             this.loadChat(firstChat.user_id, firstChat.chat_number);
+
           }
         }
       });
   },
 
   handleKeyPress(event) {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      // Prevent default behavior of creating a new line
+      event.preventDefault();
       this.sendMessage();
+    } else if (event.key === 'Enter' && event.shiftKey) {
+      // Allow default behavior (new line)
+      return;
     }
   },
 
@@ -144,7 +160,18 @@ const UIManager = {
     messageDiv.classList.add('message', isUser ? 'user' : 'assistant');
 
     // Parse Markdown content using Marked.js
-    const formattedContent = marked.parse(content);
+    // Configure marked
+    // marked.setOptions({
+    //   gfm: true,
+    //   tables: true,
+    //   breaks: true,
+    //   pedantic: true,
+    //   sanitize: true,
+    //   smartLists: true,
+    // });
+    // const formattedContent = marked.parse(content);
+    const converter = new showdown.Converter();
+    formattedContent = converter.makeHtml(content);
 
     messageDiv.innerHTML = formattedContent;
 
@@ -222,6 +249,8 @@ const UIManager = {
 //   document.addEventListener('mousemove', onMouseMove);
 //   document.addEventListener('mouseup', onMouseUp);
 // });
+
+
 
 
 // Load chat list on page load

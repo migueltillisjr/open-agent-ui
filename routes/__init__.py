@@ -8,7 +8,7 @@ from flask import redirect, url_for, flash, request, jsonify, render_template, r
 from flask_login import login_user, login_required, logout_user, current_user
 import json
 import time
-from .. import Assistant
+# from ..assistant import Assistant
 import uuid
 
 #######################################################################################

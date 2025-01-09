@@ -8,3 +8,4 @@ config.yaml*
 instance/
 __pycache__
 .expv2
+.venv

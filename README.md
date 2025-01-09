@@ -10,6 +10,9 @@
 - stream LLM responses
 - allow user commands to change the view as well as initiate actions
 
-To run
+### To run
+python3.12 -m venv .venv
+. .venv/bin/activate
+pip install -r requrements.txt
 update ~/.assistant/openllmui.yaml
-python -m openllm-api
+python -m openllmui-api

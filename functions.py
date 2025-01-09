@@ -15,7 +15,7 @@ from .config import config
 
 
 OpenAI.api_key = os.getenv('OPENAI_API_KEY')
-client = OpenAI()
+# client = OpenAI()
 fqdn = os.getenv('HOST')
 port = os.getenv('PORT')
 current_directory = os.path.dirname(os.path.abspath(__file__))

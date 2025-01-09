@@ -1,5 +1,6 @@
 from . import *
-from .. import assistant
+# from ..assistant import assistant
+from ..assistant import mock_assistant
 
 ###########################################################################################
 # Chat Management                                                                         #
@@ -32,7 +33,8 @@ def send_message(user_id, chat_number):
     db.session.add(user_msg)
 
     # Get assistant response
-    assistant_response = assistant(user_id=current_user.id)
+    # assistant_response = assistant(user_id=current_user.id)
+    assistant_response = mock_assistant(user_id=current_user.id)
 
     # Save the assistant response
     assistant_msg = Message(user_id=user_id, chat_number=chat_number, sender="assistant", content=assistant_response)

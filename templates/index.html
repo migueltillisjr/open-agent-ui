@@ -25,7 +25,7 @@
 <br>
 
       <button class="new-chat-btn" onclick="ChatManager.createNewChat()">&#x2795;</button>
-      <button onclick="ChatManager.scrollToBottom()">scroll</button>
+      <!-- <button onclick="ChatManager.scrollToBottom()">scroll</button> -->
       <div id="chat-history-list">
         <!-- Chats will be dynamically inserted here -->
       </div>
@@ -54,12 +54,22 @@
       <button class="file-manager-btn" onclick="UIManager.openFileManager()">
         <img src="https://cdn-icons-png.flaticon.com/512/148/148947.png" alt="File Manager">
       </button>
-
-      <input type="text" id="input-message" placeholder="Send a message..." onkeydown="ChatManager.handleKeyPress(event)">
-      <!-- <button onclick="ChatManager.sendMessage()">Go</button> -->
-      <!-- Loading spinner -->
-
+    
+      <div class="textarea-wrapper">
+        <textarea id="input-message" 
+                  placeholder="Send a message..." 
+                  onkeydown="ChatManager.handleKeyPress(event)" 
+                  rows="1"></textarea>
+      </div>
+    
+      <!-- Send Button -->
+      <!-- <button class="send-btn" onclick="ChatManager.sendMessage()">
+        <img src="https://cdn-icons-png.flaticon.com/512/786/786205.png" alt="Send">
+      </button> -->
     </div>
+    
+
+
   </div>
 
   <!-- Settings Modal -->
