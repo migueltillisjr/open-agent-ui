@@ -36,7 +36,7 @@ const ChatManager = {
         data.messages.forEach(msg =>
           UIManager.appendMessage(msg.message, msg.sender === 'user')
         );
-        this.scrollToBottomQuick()
+        this.scrollToBottomQuick();
       });
   },
 
@@ -161,17 +161,17 @@ const UIManager = {
 
     // Parse Markdown content using Marked.js
     // Configure marked
-    // marked.setOptions({
-    //   gfm: true,
-    //   tables: true,
-    //   breaks: true,
-    //   pedantic: true,
-    //   sanitize: true,
-    //   smartLists: true,
-    // });
-    // const formattedContent = marked.parse(content);
-    const converter = new showdown.Converter();
-    formattedContent = converter.makeHtml(content);
+    marked.setOptions({
+      gfm: true,
+      tables: true,
+      breaks: true,
+      pedantic: true,
+      sanitize: true,
+      smartLists: true,
+    });
+    const formattedContent = marked.parse(content);
+    // const converter = new showdown.Converter();
+    // formattedContent = converter.makeHtml(content);
 
     messageDiv.innerHTML = formattedContent;
 
