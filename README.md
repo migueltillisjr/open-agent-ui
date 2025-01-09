@@ -16,3 +16,18 @@ python3.12 -m venv .venv
 pip install -r requrements.txt
 update ~/.assistant/openllmui.yaml
 python -m openllmui-api
+
+## Main dev files
+
+### Biz Logic
+/functions.py
+/assistant.py
+/routes/chat_mgmt.py
+
+### Style/Format
+/templates/index.html
+/js/index.js
+/css/index.css
+
+### Model
+/models/__init__.py

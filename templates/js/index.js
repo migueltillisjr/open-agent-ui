@@ -1,5 +1,3 @@
-
-
 const ChatManager = {
   currentChatUserId: null,
   currentChatNumber: null,

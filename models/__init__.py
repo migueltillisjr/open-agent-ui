@@ -23,14 +23,18 @@ class EmailDesign(db.Model):
 class Chat(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)  # Part of composite primary key
     chat_number = db.Column(db.Integer, primary_key=True)  # Sequential ID for each user
+    chat_name = db.Column(db.String(255), nullable=True)  # Name of the chat (optional)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     messages = db.relationship('Message', backref='chat', cascade='all, delete-orphan', lazy=True)
 
-    def __init__(self, user_id):
+    def __init__(self, user_id, chat_name=None):
         self.user_id = user_id
+        self.chat_name = chat_name or f"Chat {self.chat_number}"  # Default chat name if none provided
+
         # Assign chat_number as the next sequential value for this user
         last_chat = Chat.query.filter_by(user_id=user_id).order_by(Chat.chat_number.desc()).first()
         self.chat_number = (last_chat.chat_number + 1) if last_chat else 1
+
 
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
