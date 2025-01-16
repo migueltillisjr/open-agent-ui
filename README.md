@@ -11,10 +11,14 @@
 - allow user commands to change the view as well as initiate actions
 
 ### To run
+```
 python3.12 -m venv .venv
 . .venv/bin/activate
 pip install -r requrements.txt
+```
+
 update ~/.assistant/openllmui.yaml
+
 ```
 openai:
   api_key: OPEN_AI_API_KEY
@@ -44,19 +48,28 @@ html_report_url: 'http://e3.ldmg.org:8080/notify_report'
 reply_to_email: 'no-reply@ldmg.org'
 ```
 
+```
 python -m agent
+```
+
 
 ## Main dev files
 
 ### Biz Logic
+```
 /functions.py
 /assistant.py
 /routes/chat_mgmt.py
+```
 
 ### Style/Format
+```
 /templates/index.html
 /js/index.js
 /css/index.css
+```
 
 ### Model
+```
 /models/__init__.py
+```
