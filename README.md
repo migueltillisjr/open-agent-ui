@@ -15,7 +15,7 @@ python3.12 -m venv .venv
 . .venv/bin/activate
 pip install -r requrements.txt
 update ~/.assistant/openllmui.yaml
-python -m openllmui-api
+python -m agent
 
 ## Main dev files
 
