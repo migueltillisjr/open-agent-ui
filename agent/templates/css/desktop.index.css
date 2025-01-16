@@ -452,9 +452,13 @@ body {
     cursor: pointer;
 }
 
-.logout-button:hover {
-    background-color: #e64a19; /* Darker orange on hover */
+.logout-button a {
+    display: block;
 }
+
+/* .logout-button:hover {
+    background-color: #e64a19; 
+} */
 
 /* Extra spice ------------------------------------------------------------------------------ */
 
