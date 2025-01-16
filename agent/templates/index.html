@@ -18,17 +18,9 @@
   {% if current_user.is_authenticated %}
 
   <div class="hamburger-menu">
-      <button class="hamburger-icon" onclick="toggleResponsiveSidebar()">☰</button>
+      <!-- <button class="hamburger-icon" onclick="toggleResponsiveSidebar()">☰</button> -->
   <!-- Sidebar (Message History) -->
-  <div class="responsiveSidebar" id="sidebar">
-    <div>
-      <button class="new-chat-btn" onclick="ChatManager.createNewChat()">&#x2795;</button>
-      <div id="responsivechat-history-list">
-      </div>
-    </div>
-    <img src="https://cdn-icons-png.flaticon.com/512/126/126472.png" alt="Settings" class="settings-icon" onclick="UIManager.openSettings()">
-    <button class="logout-button"><a style="text-decoration: none;color: white;" href="{{ url_for('logout') }}">Logout</a> </button>
-  </div>
+
   </div>
 
   <!-- Sidebar (Message History) -->

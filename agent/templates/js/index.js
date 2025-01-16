@@ -92,7 +92,6 @@ const ChatManager = {
       .then(response => response.json())
       .then(data => {
         UIManager.clearChatHistoryList();
-        UIManager.responsiveclearChatHistoryList();
 
         if (data.chats.length === 0) {
           this.createNewChat();
@@ -211,9 +210,6 @@ const UIManager = {
     document.getElementById('chat-history-list').innerHTML = '';
   },
 
-  responsiveclearChatHistoryList() {
-    document.getElementById('responsivechat-history-list').innerHTML = '';
-  },
 
 
   createChatHistoryItem(userId, chatNumber) {
@@ -236,10 +232,10 @@ const UIManager = {
 
 
 
-function toggleResponsiveSidebar() {
-  const sidebar = document.querySelector('.responsiveSidebar');
-  sidebar.classList.toggle('active');
-}
+// function toggleResponsiveSidebar() {
+//   const sidebar = document.querySelector('.responsiveSidebar');
+//   sidebar.classList.toggle('active');
+// }
 
 
 // Load chat list on page load
