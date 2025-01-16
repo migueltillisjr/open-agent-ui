@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat Interface with OpenAI Assistant and File Manager</title>
+  <title>Open LLM UI</title>
   {% for css_file in css_files %}
   <link rel="stylesheet" href="/css/{{ css_file }}" />
   {% endfor %}
@@ -18,8 +18,8 @@
   {% if current_user.is_authenticated %}
 
   <div class="hamburger-menu">
-      <!-- <button class="hamburger-icon" onclick="toggleResponsiveSidebar()">☰</button> -->
-  <!-- Sidebar (Message History) -->
+      <button class="hamburger-icon" onclick="responsiveMenu()">☰</button>
+      <!-- Sidebar (Message History) -->
 
   </div>
 
@@ -58,10 +58,10 @@
     <div class="input-area">
       
       <!-- File Manager Modal Button -->
-      <button class="file-manager-btn" onclick="UIManager.openFileManager()">
+      <!-- <button class="file-manager-btn" onclick="UIManager.openFileManager()">
         <img src="https://cdn-icons-png.flaticon.com/512/148/148947.png" alt="File Manager">
       </button>
-    
+     -->
       <div class="textarea-wrapper">
         <textarea id="input-message" 
                   placeholder="Send a message..." 
@@ -80,26 +80,26 @@
   </div>
 
   <!-- Settings Modal -->
-  <div id="settings-modal" class="modal">
+  <!-- <div id="settings-modal" class="modal">
     <div class="modal-content">
       <h3>Settings</h3>
       <p>Here you can configure your preferences.</p>
       <button class="close-btn" onclick="UIManager.closeSettings()">Close</button>
     </div>
-  </div>
+  </div> -->
 
   <!-- File Manager Modal -->
-  <div id="file-manager-modal" class="modal">
+  <!-- <div id="file-manager-modal" class="modal">
     <div class="modal-content">
       <h3>File Manager</h3>
       <input type="file" id="file-upload-modal">
       <button onclick="UIManager.uploadFileFromModal()">Upload</button>
       <div id="file-list">
-        <!-- List of files will be dynamically inserted here -->
+
       </div>
       <button class="close-btn" onclick="UIManager.closeFileManager()">Close</button>
     </div>
-  </div>
+  </div> -->
 
 
 <!-- Include Marked.js from CDN -->
