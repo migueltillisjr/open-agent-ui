@@ -92,6 +92,7 @@ const ChatManager = {
       .then(response => response.json())
       .then(data => {
         UIManager.clearChatHistoryList();
+        UIManager.responsiveclearChatHistoryList();
 
         if (data.chats.length === 0) {
           this.createNewChat();
@@ -201,9 +202,19 @@ const UIManager = {
     document.getElementById('chat-window').innerHTML = '';
   },
 
+//
+
+
+  //
+
   clearChatHistoryList() {
     document.getElementById('chat-history-list').innerHTML = '';
   },
+
+  responsiveclearChatHistoryList() {
+    document.getElementById('responsivechat-history-list').innerHTML = '';
+  },
+
 
   createChatHistoryItem(userId, chatNumber) {
     const historyList = document.getElementById('chat-history-list');
@@ -217,38 +228,18 @@ const UIManager = {
     deleteBtn.innerHTML = '&times;';
     deleteBtn.setAttribute('onclick', `ChatManager.deleteChat(${userId}, ${chatNumber})`);
 
-
     historyItem.appendChild(deleteBtn);
     historyList.appendChild(historyItem);
+
   },
 };
 
-// const chatWindow = document.getElementById('chat-window');
-
-// // Add a draggable area
-// const dragHandle = document.createElement('div');
-// dragHandle.classList.add('drag-handle');
-// chatWindow.prepend(dragHandle);
-
-// dragHandle.addEventListener('mousedown', function (e) {
-//   let offsetX = e.clientX - chatWindow.offsetLeft;
-//   let offsetY = e.clientY - chatWindow.offsetTop;
-
-//   function onMouseMove(event) {
-//     chatWindow.style.left = `${event.clientX - offsetX}px`;
-//     chatWindow.style.top = `${event.clientY - offsetY}px`;
-//   }
-
-//   function onMouseUp() {
-//     document.removeEventListener('mousemove', onMouseMove);
-//     document.removeEventListener('mouseup', onMouseUp);
-//   }
-
-//   document.addEventListener('mousemove', onMouseMove);
-//   document.addEventListener('mouseup', onMouseUp);
-// });
 
 
+function toggleResponsiveSidebar() {
+  const sidebar = document.querySelector('.responsiveSidebar');
+  sidebar.classList.toggle('active');
+}
 
 
 // Load chat list on page load
