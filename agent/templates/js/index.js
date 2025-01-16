@@ -201,10 +201,6 @@ const UIManager = {
     document.getElementById('chat-window').innerHTML = '';
   },
 
-//
-
-
-  //
 
   clearChatHistoryList() {
     document.getElementById('chat-history-list').innerHTML = '';
@@ -229,13 +225,6 @@ const UIManager = {
 
   },
 };
-
-
-
-// function toggleResponsiveSidebar() {
-//   const sidebar = document.querySelector('.responsiveSidebar');
-//   sidebar.classList.toggle('active');
-// }
 
 
 // Load chat list on page load
