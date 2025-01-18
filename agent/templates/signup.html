@@ -5,12 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <style>
-        body {
+        /* body {
             font-family: Arial, sans-serif;
             background-color: #f3f4f6;
             margin: 0;
             padding: 0;
-        }
+        } */
+        @keyframes puff-in-center {
+    0% {
+      transform: scale(2);
+      filter: blur(4px);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+  
+
+.puff-in-center {
+    -webkit-animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+            animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
 
         .container {
             display: flex;
@@ -49,7 +67,7 @@
         }
 
         .btn {
-            background-color: #f38609;
+            background-color: #2b1803;
             color: white;
             border: none;
             padding: 10px;
@@ -86,8 +104,8 @@
 <body>
 
 <div class="container">
-    <div class="form-container">
-        <h2>Sign Up</h2>
+    <div class="form-container puff-in-center">
+        <h1>Sign Up</h1>
         <img src="/imgs/logo.png">
         <br>
         <br>

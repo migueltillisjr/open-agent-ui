@@ -120,18 +120,7 @@
         flex-direction: column;
     }
 
-    .header {
-        background: linear-gradient(to right, #7b2303, rgba(123, 35, 3, 0));
-        padding: 10px;
-        display: flex;
-        justify-content: space-between;
-    }
 
-    .header .logo {
-        font-weight: bold;
-        font-size: 1.2em;
-        color: white;
-    }
 
     .chat-window {
         flex: 1;
@@ -518,13 +507,6 @@
     .delete-btn:hover {
         /* transform: scale(1.2) rotate(10deg); */
         color: #ff4d4d;
-    }
-
-    /* Chat Container */
-    .header {
-        background: linear-gradient(to right, var(--primary-color), transparent);
-        padding: 15px;
-        backdrop-filter: blur(10px);
     }
 
 

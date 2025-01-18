@@ -256,6 +256,19 @@ def mock_assistant(user_id: str):
 
 A paragraph is here, 
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+
+
+## Code block example
+
+```python
+python("Hello World!")
+
+def hello():
+    print("Data")
+
+```
+
+
 '''
 
     return message

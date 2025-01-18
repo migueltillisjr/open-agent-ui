@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Open LLM UI</title>
+  <title>Open Agent UI</title>
+
+  <!-- agent/routes/web_view.py @app.route('/') -->
   {% for css_file in css_files %}
   <link rel="stylesheet" href="/css/{{ css_file }}" />
   {% endfor %}
+
   <style>
   </style>
 </head>
 <body>
 
-<div class="main-container">
+<div class="main-container fade-in">
 
-      <!-- Display the username and logout button if the user is logged in -->
+  <!-- agent/routes/__init__.py -->
+  <!-- Display the username and logout button if the user is logged in -->
   {% if current_user.is_authenticated %}
 
   <div class="hamburger-menu">
@@ -42,9 +46,9 @@
   <!-- Chat Container -->
   <div class="chat-container">
     <!-- Header -->
-    <!-- <div style="font-size: x-small;" class="header">
-      <div class="logo">E3 v2.0</div>
-    </div> -->
+    <div style="font-size: x-small;" class="header">
+      <div class="logo">Open Agent UI 1.0</div>
+    </div>
     <div id="loading-spinner"></div>
     <!-- Chat Window -->
      <div class="scroll-box" id="scroll-box">
@@ -68,11 +72,6 @@
                   onkeydown="ChatManager.handleKeyPress(event)" 
                   rows="1"></textarea>
       </div>
-    
-      <!-- Send Button -->
-      <!-- <button class="send-btn" onclick="ChatManager.sendMessage()">
-        <img src="https://cdn-icons-png.flaticon.com/512/786/786205.png" alt="Send">
-      </button> -->
     </div>
     
 
@@ -106,8 +105,6 @@
 {% for js_file in js_files %}
 <script src="/js/{{ js_file }}"></script>
 {% endfor %}
-<!-- <script src="/marked.min.js"></script>
-<script src="/chat.js"></script> -->
   
 
 {% else %}
@@ -117,7 +114,6 @@
 {% endif %}
 
 </div>
-
 
 </body>
 </html>

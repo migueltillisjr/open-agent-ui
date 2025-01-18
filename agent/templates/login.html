@@ -4,14 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- <link rel="stylesheet" href="/css/common.css" /> -->
     <style>
-        body {
+        /* body {
             font-family: Arial, sans-serif;
             background-color: #f3f4f6;
             margin: 0;
             padding: 0;
-        }
+        } */
+        @keyframes puff-in-center {
+    0% {
+      transform: scale(2);
+      filter: blur(4px);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+  
 
+.puff-in-center {
+    -webkit-animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+            animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+}
         .container {
             display: flex;
             justify-content: center;
@@ -86,7 +104,7 @@
 <body>
 
 <div class="container">
-    <div class="form-container">
+    <div class="form-container puff-in-center">
         <img src="/imgs/logo.png">
         <br>
         <br>
@@ -102,7 +120,8 @@
         {% endwith %}
 
         <!-- Login Form -->
-        <form method="POST" novalidate>
+
+        <form  method="POST" novalidate>
             {{ form.hidden_tag() }}
 
                 <input style="box-sizing: border-box;" type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required>
@@ -116,7 +135,7 @@
             <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign up here</a>.</p>
         </div>
     </div>
-</div>
+
 
 </body>
 </html>
