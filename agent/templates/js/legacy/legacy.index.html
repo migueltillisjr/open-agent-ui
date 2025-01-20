@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-  <!-- python REST >> agent/routes/web_view.py >> @app.route('/') -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Agent UI</title>
 
-  <!-- python REST >> agent/routes/web_view.py >> @app.route('/css/<filename>') -->
+  <!-- agent/routes/web_view.py @app.route('/') -->
   {% for css_file in css_files %}
   <link rel="stylesheet" href="/css/{{ css_file }}" />
   {% endfor %}
@@ -28,19 +27,26 @@
   </div>
 
 
+
+
   <!-- Sidebar (Message History) -->
   <div class="sidebar" id="sidebar">
     <div>
+      <!-- <img style="width: 100%;margin: auto;" src="/imgs/logo.png">
+      <p style="text-align: center;color: #333;">Welcome {{ current_user.username }}</p> -->
+
       <button class="new-chat-btn" onclick="ChatManager.createNewChat()">&#x2795;</button>
+      <!-- <img src="https://cdn-icons-png.flaticon.com/512/126/126472.png" alt="Settings" class="new-chat-btn settings-icon" onclick="UIManager.openSettings()"> -->
+
       <div id="chat-history-list">
-        <!-- agent/templates/js/ChatManager.js >> updateChatList()-->
         <!-- Chats will be dynamically inserted here -->
       </div>
+
     </div>
-    <button class="logout-button">
-      <a style="text-decoration: none;color: white;" href="{{ url_for('logout') }}">Logout</a> 
-    </button>
+    <button class="logout-button"><a style="text-decoration: none;color: white;" href="{{ url_for('logout') }}">Logout</a> </button>
   </div>
+
+
 
 
   <!-- Chat Container -->
@@ -55,28 +61,55 @@
     <!-- Chat Window -->
      <div class="scroll-box" id="scroll-box">
       <div class="chat-window" id="chat-window">
-        <!-- JS >> agent/templates/js/UIManager.js >> appendMessage() -->
         <!-- Chat messages will appear here -->
       </div>
     </div>
     
-
     <!-- Input Area -->
     <div class="input-area">
+        <!-- agent/routes/files.py File Manager Modal Button -->
+        <!-- <button class="file-manager-btn" onclick="UIManager.openFileManager()">
+          <img src="https://cdn-icons-png.flaticon.com/512/148/148947.png" alt="File Manager">
+        </button>
+      -->
         <div class="textarea-wrapper">
           <!-- Vertical Agent Access -->
+          <!-- python >> agent/assistant.py >> mock_assistant() (OpenAI entry point) and agent/functions.py -->
           <!-- JS >> ChatManager.js /chat/${this.currentChatUserId}/${this.currentChatNumber}/send -->
           <!-- python REST >> agent/routes/chat_mgmt.py >> @app.route('/chat/<int:user_id>/<int:chat_number>/send', methods=['POST']) -->
-          <!-- python Biz Logic >> agent/assistant.py >> mock_assistant() (OpenAI entry point) and agent/functions.py (Supporting Agent Functionality) -->
           <textarea id="input-message" 
                     placeholder="Send a message..." 
                     onkeydown="ChatManager.handleKeyPress(event)" 
                     rows="1"></textarea>
         </div>
     </div>
+    
   </div>
 
-<!-- python REST >> agent/routes/web_view.py >> @app.route('/js/<filename>') -->
+  <!-- Settings Modal -->
+  <!-- <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <h3>Settings</h3>
+      <p>Here you can configure your preferences.</p>
+      <button class="close-btn" onclick="UIManager.closeSettings()">Close</button>
+    </div>
+  </div> -->
+
+  <!-- File Manager Modal -->
+  <!-- <div id="file-manager-modal" class="modal">
+    <div class="modal-content">
+      <h3>File Manager</h3>
+      <input type="file" id="file-upload-modal">
+      <button onclick="UIManager.uploadFileFromModal()">Upload</button>
+      <div id="file-list">
+
+      </div>
+      <button class="close-btn" onclick="UIManager.closeFileManager()">Close</button>
+    </div>
+  </div> -->
+
+
+<!-- agent/routes/web_view.py @app.route('/js/<filename>') -->
 {% for js_file in js_files %}
 <script src="/js/{{ js_file }}"></script>
 {% endfor %}

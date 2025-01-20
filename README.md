@@ -1,14 +1,18 @@
 ### Capabilities
-[x] add file pane/upload capability
-[x] render LLM responses properly w/ markup
-[x] authentication, login, logout, signup, track login with cookie
-[x] integrate true llm responses
-- settings pannel, modify subscription
-
-- upgrade view, much like language Gui
-- pin a chat to save from deletion, must un-pin to delete
-- stream LLM responses
-- allow user commands to change the view as well as initiate actions
+- [x] add file pane/upload capability
+- [x] render LLM responses properly w/ markup
+- [x] authentication, login, logout, signup, track login with cookie
+- [x] integrate true llm responses
+- [] Add files integration
+- [] settings pannel, modify subscription
+- [] upgrade view, much like language Gui
+- [] pin a chat to save from deletion, must un-pin to delete
+- [] stream LLM responses
+- [] allow user commands to change the view as well as initiate actions
+- [] Use aws bedrock agents
+- [] control view using natural language
+- [] create view for agent pipelines
+- [] add agent steps log view for diagnosis
 
 ### To run
 ```
@@ -55,21 +59,27 @@ python -m agent
 
 ## Main dev files
 
-### Biz Logic
+### Config
 ```
-/functions.py
-/assistant.py
-/routes/chat_mgmt.py
+/agent/config/__init__.py
 ```
 
-### Style/Format
+
+### Controller - Biz Logic
 ```
-/templates/index.html
-/js/index.js
-/css/index.css
+/agent/functions.py
+/agent/assistant.py
+/agent/routes/chat_mgmt.py
 ```
 
-### Model
+### View - Style/Format
 ```
-/models/__init__.py
+/agent/templates/*.html
+/agent/templates/js/*.js
+/agent/templates/css/*.css
+```
+
+### Model - DB / Schema
+```
+/agent/models/__init__.py
 ```

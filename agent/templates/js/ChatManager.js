@@ -101,16 +101,16 @@ const ChatManager = {
         });
     },
   
-    // handleKeyPress(event) {
-    //   if (event.key === 'Enter' && !event.shiftKey) {
-    //     // Prevent default behavior of creating a new line
-    //     event.preventDefault();
-    //     this.sendMessage();
-    //   } else if (event.key === 'Enter' && event.shiftKey) {
-    //     // Allow default behavior (new line)
-    //     return;
-    //   }
-    // },
+    handleKeyPress(event) {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        // Prevent default behavior of creating a new line
+        event.preventDefault();
+        this.sendMessage();
+      } else if (event.key === 'Enter' && event.shiftKey) {
+        // Allow default behavior (new line)
+        return;
+      }
+    },
   
     deleteChat(userId, chatNumber) {
       console.log(`Delete button clicked for chat ${chatNumber}`);

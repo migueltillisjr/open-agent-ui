@@ -362,11 +362,13 @@
         cursor: pointer;
         width: 24px;
         height: 24px;
-        display: none;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
+        /* display: block;
+        position: fixed; */
+        /* top: 15px;
+        right: 10px; */
+        /* bottom: 20px; */
+        /* right: 20px; */
+        /* z-index: 1000; */
     }
 
     /* Spinner styling */
@@ -569,7 +571,7 @@
         color: white;
         border-radius: 25px;
         padding: 5px 10px;
-        transition: all var(--transition-speed) ease;
+        /* transition: all var(--transition-speed) ease; */
         position: relative;
         overflow: hidden;
     }
