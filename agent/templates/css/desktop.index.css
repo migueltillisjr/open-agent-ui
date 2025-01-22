@@ -46,6 +46,7 @@
         border-right: 1px solid rgba(0, 0, 0, 0.05);
         box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);
         transition: all var(--transition-speed) ease;
+        /* max-width: 100px; */
     }
 
     .sidebar:hover {
@@ -69,7 +70,7 @@
     }
 
     .sidebar {
-        max-width: 25%;
+        max-width: 20%;
         width: 100%;
         background: linear-gradient(to bottom, white, #ffe0b2); 
         color: white;

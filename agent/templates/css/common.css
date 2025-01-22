@@ -13,7 +13,7 @@
 
 /* Chat Container */
 .header {
-    background: linear-gradient(to right, grey, transparent);
+    background: linear-gradient(to right, rgb(135, 64, 2), transparent);
     padding: 15px;
     backdrop-filter: blur(10px);
 }

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E3 - V4</title>
+  <title>Open Agent UI</title>
 
   <!-- python REST >> agent/routes/web_view.py >> @app.route('/css/<filename>') -->
   {% for css_file in css_files %}
@@ -30,9 +30,7 @@
 
   <!-- Sidebar (Message History) -->
   <div class="sidebar" id="sidebar">
-    <div style="text-align: center;">
-      <img style="width: 60%;margin: auto;display: inline-block;" src="/imgs/logo.png">
-      <p style="text-align: center;color: #333;">Welcome {{ current_user.username }}</p>
+    <div>
       <button class="new-chat-btn" onclick="ChatManager.createNewChat()">&#x2795;</button>
       <div id="chat-history-list">
         <!-- agent/templates/js/ChatManager.js >> updateChatList()-->
@@ -49,7 +47,7 @@
   <div class="chat-container">
     <!-- Header -->
     <div style="font-size: x-small;" class="header">
-      <div class="logo">E3 - V4</div>
+      <div class="logo">Open Agent UI 1.0</div>
     </div>
     <div id="loading-spinner"></div>
 
