@@ -21,7 +21,11 @@ python3.12 -m venv .venv
 pip install -r requrements.txt
 ```
 
-update ~/.assistant/openllmui.yaml
+```
+python -m agent
+```
+
+update ~/.assistant/open-agent-ui.yaml
 
 ```
 openai:
@@ -52,9 +56,7 @@ html_report_url: 'http://e3.ldmg.org:8080/notify_report'
 reply_to_email: 'no-reply@ldmg.org'
 ```
 
-```
-python -m agent
-```
+
 
 
 ## Main dev files

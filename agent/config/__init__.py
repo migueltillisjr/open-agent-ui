@@ -32,7 +32,7 @@ from flask_cors import CORS
 user_profile_path = os.path.expanduser('~')
 
 class Config:
-    def __init__(self, config_path=f'{user_profile_path}/.assistant/openllmui.yaml'):
+    def __init__(self, config_path=f'{user_profile_path}/.assistant/open-agent-ui.yaml'):
         with open(config_path, 'r') as file:
             self.config = yaml.safe_load(file)
         self._replace_env_vars(self.config)
