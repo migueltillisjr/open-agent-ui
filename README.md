@@ -1,5 +1,5 @@
 ### UI/UX
-![Alt Text](agent/imgs/app_screen1.png)
+![Alt Text](agent/imgs/app_screen.png)
 
 ### Capabilities
 - [x] add file pane/upload capability
